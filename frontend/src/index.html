@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arket — Curated Modern Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Ark<span>et</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Collection</a></li>
+    <li><a href="#">New In</a></li>
+    <li><a href="#">Sale</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="cart-btn" id="cartToggle">
+      🛍 Cart <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-copy">
+    <div class="hero-label">New Collection 2025</div>
+    <h1>Curated for the <em>Modern</em> Lifestyle</h1>
+    <p>Premium goods, thoughtfully sourced. From everyday essentials to statement pieces that define your space.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" id="shopNow">Shop Now</button>
+      <button class="btn-ghost">View Lookbook</button>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="blob"></div>
+    <div class="featured-card">
+      <div style="font-size:64px">🎧</div>
+      <div class="featured-label">Featured pick</div>
+      <div class="featured-name">Studio Pro</div>
+    </div>
+    <div class="hero-tag">
+      <div class="hero-tag-label">Starting from</div>
+      <strong>$89</strong>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><span class="stat-num">12k+</span><span class="stat-label">Happy customers</span></div>
+  <div class="stat"><span class="stat-num">340+</span><span class="stat-label">Curated products</span></div>
+  <div class="stat"><span class="stat-num">4.9★</span><span class="stat-label">Average rating</span></div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="products">
+  <div class="section-header">
+    <h2 class="section-title">Our <em>Collection</em></h2>
+    <div class="filter-tabs" id="filterTabs">
+      <button class="tab active" data-filter="all">All</button>
+      <button class="tab" data-filter="tech">Tech</button>
+      <button class="tab" data-filter="home">Home</button>
+      <button class="tab" data-filter="fashion">Fashion</button>
+    </div>
+  </div>
+  <div class="products-grid" id="productsGrid">
+    <div class="loading">Loading products...</div>
+  </div>
+</section>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h2>Your Cart</h2>
+    <button class="close-btn" id="cartClose">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-price" id="cartTotal">$0.00</span>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout →</button>
+  </div>
+</aside>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <div class="toast-dot"></div>
+  <span id="toastMsg"></span>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

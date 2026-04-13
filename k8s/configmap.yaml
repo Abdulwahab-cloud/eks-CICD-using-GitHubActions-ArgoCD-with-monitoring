@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: arket-config
+  namespace: arket
+  labels:
+    app: arket
+data:
+  NODE_ENV: "production"
+  API_PORT: "3001"
+  WORKER_PORT: "5000"
+  # Service discovery — K8s DNS resolves these automatically
+  WORKER_URL: "http://worker-service:5000"
+  ALLOWED_ORIGINS: "http://frontend-service"
+  LOG_LEVEL: "info"

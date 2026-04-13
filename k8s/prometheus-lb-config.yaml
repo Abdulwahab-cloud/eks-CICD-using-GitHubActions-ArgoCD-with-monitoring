@@ -1,0 +1,9 @@
+apiVersion: gateway.k8s.aws/v1beta1
+kind: LoadBalancerConfiguration
+metadata:
+  name: prometheus-alb-config
+  namespace: monitoring
+spec:
+  scheme: internet-facing
+  ipAddressType: ipv4
+  

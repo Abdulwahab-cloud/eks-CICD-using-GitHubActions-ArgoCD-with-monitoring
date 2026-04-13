@@ -1,0 +1,73 @@
+version: '3.9'
+ 
+# ===== NETWORKS =====
+networks:
+  arket-net:
+    driver: bridge
+ 
+# ===== VOLUMES =====
+volumes:
+  prometheus-data:
+  grafana-data:
+ 
+# ===== SERVICES =====
+services:
+ 
+  # ──────────────────────────────────────────
+  # FRONTEND — nginx serving static assets
+  # ──────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: arket-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - api-service
+    networks:
+      - arket-net
+    restart: unless-stopped
+    labels:
+      - "service=frontend"
+ 
+  # ──────────────────────────────────────────
+  # API SERVICE — Node.js Express
+  # ──────────────────────────────────────────
+  api-service:
+    build:
+      context: ./api-service
+      dockerfile: Dockerfile
+    container_name: arket-api
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+      - WORKER_URL=http://worker-service:5000
+      - ALLOWED_ORIGINS=http://localhost:3000
+    depends_on:
+      - worker-service
+    networks:
+      - arket-net
+    restart: unless-stopped
+    labels:
+      - "service=api-service"
+ 
+  # ──────────────────────────────────────────
+  # WORKER SERVICE — Python FastAPI
+  # ──────────────────────────────────────────
+  worker-service:
+    build:
+      context: ./worker-service
+      dockerfile: Dockerfile
+    container_name: arket-worker
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+    networks:
+      - arket-net
+    restart: unless-stopped
+    labels:
+      - "service=worker-service"

@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: arket
+  labels:
+    app: arket
+    service: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: arket
+      service: frontend
+  template:
+    metadata:
+      labels:
+        app: arket
+        service: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: abdulwahabmsalih/arket-frontend:latest
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: arket
+  labels:
+    app: arket
+    service: frontend
+spec:
+  selector:
+    service: frontend
+    
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  
+    

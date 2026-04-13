@@ -1,0 +1,8 @@
+apiVersion: gateway.k8s.aws/v1beta1
+kind: LoadBalancerConfiguration
+metadata:
+  name: frontend-alb-config
+  namespace: arket
+spec:
+  scheme: internet-facing
+  ipAddressType: ipv4

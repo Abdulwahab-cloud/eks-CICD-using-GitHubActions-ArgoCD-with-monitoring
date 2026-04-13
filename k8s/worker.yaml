@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-service
+  namespace: arket
+  labels:
+    app: arket
+    service: worker-service
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: arket
+      service: worker-service
+
+  template:
+    metadata:
+      labels:
+        app: arket
+        service: worker-service
+    spec:
+ 
+      containers:
+        - name: worker-service
+          image: abdulwahabmsalih/arket-worker:latest
+          ports:
+            - containerPort: 5000
+              name: http
+              protocol: TCP
+          env:
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: arket-config
+                  key: WORKER_PORT
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: worker-service
+  namespace: arket
+  labels:
+    app: arket
+    service: worker-service
+spec:
+  type: ClusterIP
+  selector:
+    service: worker-service
+  ports:
+    - name: http
+      port: 5000
+      targetPort: 5000
+      protocol: TCP
+ 
