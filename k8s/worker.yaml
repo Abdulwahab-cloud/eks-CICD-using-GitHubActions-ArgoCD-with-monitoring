@@ -23,7 +23,7 @@ spec:
  
       containers:
         - name: worker-service
-          image: abdulwahabmsalih/arket-worker:a02acfa5f5d7e43a015bd3c7b2af8d43aac54ac3
+          image: abdulwahabmsalih/arket-worker:07df52bf0c489e745c6b846b25a1da3db4c02caa
           ports:
             - containerPort: 5000
               name: http
