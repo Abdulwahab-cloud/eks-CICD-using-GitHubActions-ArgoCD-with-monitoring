@@ -160,14 +160,12 @@ kubectl get gateway arket-gateway -n arket \
 ## Step 7 — Deploy app
 
 ```bash
-kubectl apply -f k8s/00-namespace.yaml
-kubectl apply -f k8s/01-configmap.yaml
-kubectl apply -f k8s/02-secrets.yaml
-kubectl apply -f k8s/03-worker-deployment.yaml
-kubectl apply -f k8s/04-api-deployment.yaml
-kubectl apply -f k8s/05-frontend-deployment.yaml
-kubectl apply -f k8s/09-prometheus.yaml
-kubectl apply -f k8s/10-grafana.yaml
+kubectl apply -f k8s/configmap.yaml
+kubectl apply -f k8s/secrets.yaml
+kubectl apply -f k8s/worker.yaml
+kubectl apply -f k8s/api.yaml
+kubectl apply -f k8s/frontend.yaml
+
 ```
 
 ---
