@@ -33,7 +33,7 @@ jobs:
             - name: Build & Push API
               uses: docker/build-push-action@v5
               with:
-                context: ./api
+                context: ./api-service
                 push: true
                 tags: |
                     ${{ secrets.DOCKERHUB_USERNAME }}/arket-api:latest
@@ -42,7 +42,7 @@ jobs:
             - name: Build & Push worker
               uses: docker/build-push-action@v5
               with:
-                context: ./worker
+                context: ./worker-service
                 push: true
                 tags: |
                     ${{ secrets.DOCKERHUB_USERNAME }}/arket-worker:latest
