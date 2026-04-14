@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: abdulwahabmsalih/arket-frontend:9049dfdd637d53aa16be90f5be17985118ac3201
+        image: abdulwahabmsalih/arket-frontend:c065f4715fb2718dd9eb82d5ed3d9d78bd13a486
         ports:
         - containerPort: 80
 
