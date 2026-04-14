@@ -22,7 +22,7 @@ spec:
       containers:
           - name: api-service
           
-            image: abdulwahabmsalih/arket-api:261a048fc464bce8946e522967d35f10424caed1
+            image: abdulwahabmsalih/arket-api:5fb13ef49a9c0e7f4402d32f371908f22a4d0512
             imagePullPolicy: Always
             ports:
               - containerPort: 3001
